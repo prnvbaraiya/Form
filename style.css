@@ -1,4 +1,4 @@
-body {
+/* body {
   right: 0;
   left: 0;
   margin: 0;
@@ -15,43 +15,64 @@ body {
   background: linear-gradient(rgb(18, 16, 18), rgb(255, 5, 247));
 }
 
+.main {
+  color: purple;
+  transition: 1s;
+} */
+
+:root {
+  --color-primary: rgb(109, 219, 113);
+  --color-primary-light: rgb(174, 209, 174);
+  --color-primary-dark: rgb(20, 94, 20);
+
+  --form-background: black;
+  --form-content-color: white;
+}
+
 .form__container {
-  position: absolute;
-  top: 0;
-  display: none;
+  position: fixed;
+  top: -100vh;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
   min-height: 600px;
-  background-color: rgba(0, 0, 0, 0.7);
   background: transparent;
+  transition: 3s;
 }
 
-.show {
-  display: flex;
-  backdrop-filter: blur(1px);
-}
-.show .form {
-  animation: show 1s ease forwards;
+.form__hide {
+  animation: upper 1s linear forwards;
 }
 
-@keyframes show {
+@keyframes upper {
   0% {
-    opacity: 0;
-  }
-  70% {
-    transform: translateY(-100px);
+    opacity: 1;
+    top: 0;
   }
   100% {
-    transform: translateY(0px);
-    opacity: 1;
+    opacity: 0;
+    top: -100vh;
   }
 }
 
-.main {
-  color: purple;
-  transition: 1s;
+.form__show {
+  animation: down 1s linear forwards;
+  backdrop-filter: blur(1px);
+}
+@keyframes down {
+  0% {
+    top: -100vh;
+    opacity: 0;
+  }
+  100% {
+    opactiy: 1;
+    top: 0;
+  }
 }
 
 .form__heading {
@@ -59,7 +80,7 @@ body {
   justify-content: space-between;
   font-size: 50px;
   margin-bottom: 50px;
-  color: purple;
+  color: var(--color-primary);
 }
 
 .form__close {
@@ -67,21 +88,21 @@ body {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  color: var(--color-primary);
 }
 
 .form__close:hover {
-  color: purple;
+  color: var(--color-primary-dark);
   transform: translateY(-2px);
   transition: 0.5s;
 }
 
 .form {
-  background-color: white;
+  background-color: var(--form-background);
   width: 400px;
   margin: 20px;
   border-radius: 8px;
   padding: 20px 40px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.564);
   backdrop-filter: blur(10px);
 }
 
@@ -105,6 +126,7 @@ body {
   outline: none;
   background: none;
   z-index: 1;
+  color: var(--form-content-color);
 }
 
 ::placeholder {
@@ -116,8 +138,8 @@ body {
   top: 15px;
   left: 15px;
   padding: 0 4px;
-  color: #c29dca;
-  background-color: white;
+  color: var(--color-primary-light);
+  background-color: var(--form-background);
   font-size: 16px;
   transition: 0.5s;
   z-index: 0;
@@ -128,7 +150,7 @@ body {
   margin-left: auto;
   padding: 15px 30px;
   border: none;
-  background-color: purple;
+  background-color: var(--color-primary);
   color: white;
   border-radius: 6px;
   cursor: pointer;
@@ -137,7 +159,7 @@ body {
 }
 
 .submit__button:hover {
-  background-color: #523270;
+  background-color: var(--color-primary-dark);
   transform: translateY(-2px);
   transition: 0.5s;
 }
@@ -149,11 +171,11 @@ body {
   z-index: 10;
   font-size: 14px;
   font-weight: 600;
-  color: purple;
+  color: var(--color-primary);
 }
 
 .input:focus {
-  border: 2px solid purple;
+  border: 2px solid var(--color-primary);
 }
 
 .input:not(:placeholder-shown) + .label {
@@ -163,5 +185,5 @@ body {
   z-index: 10;
   font-size: 14px;
   font-weight: 600;
-  color: purple;
+  color: var(--color-primary);
 }

@@ -42,14 +42,14 @@
     <script>
       var fcontainer= document.querySelector('.form__container');
       function openForm(){
-        fcontainer.classList.remove('hide');
-        fcontainer.classList.add('show');
+        fcontainer.classList.remove('form__hide');
+        fcontainer.classList.add('form__show');
       }
 
       function closeForm(event){
         event.preventDefault();
-        fcontainer.classList.remove('show');
-        fcontainer.classList.add('hide');
+        fcontainer.classList.remove('form__show');
+        fcontainer.classList.add('form__hide');
         
       }
     </script>
